@@ -13,9 +13,14 @@ When you use of the `innerHTML` in React, you usually use the `dangerouslySetInn
 
 ``` jsx
 class App extends React.Component{
-  state = {
-    html: '<h1>dangerouslySetInnerHTML is bad</h1>'
+  constructor(props){
+    super(props);
+
+    this.state = {
+        html: `<h1>dangerouslySetInnerHTML is bad</h1>`
+    }
   }
+ 
   render() {
     const html = this.state;
 
@@ -34,9 +39,14 @@ Instead,
 
 ``` jsx
 class App extends React.Component{
-  state = {
-    html: '<h1>v-html is awesome</h1>'
+  constructor(props){
+    super(props);
+
+    this.state = {
+        html: `<h1>v-html is awesome</h1>`
+    }
   }
+  
   render() {
     const html = this.state;
 

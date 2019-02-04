@@ -14,7 +14,7 @@ When you use of the `innerHTML` in React, you usually use the `dangerouslySetInn
 ``` jsx
 class App extends React.Component{
   state = {
-    html: '<h1>dangerouslySetInnerHTML is suck</h1>'
+    html: '<h1>dangerouslySetInnerHTML is bad</h1>'
   }
   render() {
     const html = this.state;

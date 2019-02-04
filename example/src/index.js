@@ -8,7 +8,7 @@ class App extends Component {
         super(props);
 
         this.state = {
-            html: `<span>2</span><i>33</i>`
+            html: `<strong>v-html</strong> is awesome`
         }
     }
 
@@ -17,8 +17,10 @@ class App extends Component {
 
         return (
            <div className="main">
-               <h4>React v-html example：</h4>
+               <h4>The example of <i>React v-html</i>：</h4>
                <textarea 
+                    rows="20"
+                    cols="50"
                     value={html}
                     onChange={(e) => 
                         this.setState({
@@ -26,6 +28,7 @@ class App extends Component {
                         })
                     }
                 />
+                <br />
                 <div
                     v-html={html}
                 />

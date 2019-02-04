@@ -1,7 +1,7 @@
 {
   "name": "babel-plugin-react-v-html",
-  "version": "0.0.1",
-  "description": "React v-html transform",
+  "version": "1.0.0",
+  "description": "Babel plugin for React component to transform the JSXAttribute from v-html to dangerouslySetInnerHTML.",
   "main": "./src/index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development port=8081 node ./example/server/index.js",

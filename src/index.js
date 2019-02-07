@@ -1,24 +1,33 @@
-module.exports = ({ types: babelTypes }) => ({
+module.exports = ({
+    types: babelTypes
+}) => ({
     visitor: {
         JSXIdentifier(path) {
-            const name = path.node.name;
-            if (name === 'v-html') {
-                path.node.name = 'dangerouslySetInnerHTML';
-
+            if (path.node.name === 'v-html') {
                 const {
                     JSXExpressionContainer,
                     ObjectExpression,
                     ObjectProperty,
-                    StringLiteral
-                } = babelTypes;
+                    StringLiteral,
+                    JSXIdentifier
+                } = babelTypes
 
-                path.container.value = JSXExpressionContainer(
-                    ObjectExpression([
-                        ObjectProperty(
-                            StringLiteral('__html'),
-                            path.container.value.expression,
-                        )
-                    ])
+                path.replaceWith(
+                    JSXIdentifier('dangerouslySetInnerHTML')
+                )
+
+                const htmlContainer = path.parentPath.get('value'),
+                    html = htmlContainer.get('expression')
+
+                htmlContainer.replaceWith(
+                    JSXExpressionContainer(
+                        ObjectExpression([
+                            ObjectProperty(
+                                StringLiteral('__html'),
+                                html.node,
+                            )
+                        ])
+                    )
                 )
             }
         }

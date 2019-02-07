@@ -24,7 +24,7 @@ module.exports = ({
                         ObjectExpression([
                             ObjectProperty(
                                 StringLiteral('__html'),
-                                html.node,
+                                html.node
                             )
                         ])
                     )

@@ -10,25 +10,24 @@ module.exports = ({
                     ObjectProperty,
                     StringLiteral,
                     JSXIdentifier
-                } = babelTypes
+                } = babelTypes,
+                htmlContainer = path.parentPath.get('value'),
+                html = htmlContainer.get('expression').node;
 
                 path.replaceWith(
                     JSXIdentifier('dangerouslySetInnerHTML')
-                )
-
-                const htmlContainer = path.parentPath.get('value'),
-                    html = htmlContainer.get('expression')
+                );
 
                 htmlContainer.replaceWith(
                     JSXExpressionContainer(
                         ObjectExpression([
                             ObjectProperty(
                                 StringLiteral('__html'),
-                                html.node
+                                html
                             )
                         ])
                     )
-                )
+                );
             }
         }
     }
